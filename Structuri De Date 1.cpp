@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include <string.h>
+#include<string.h>
 
 struct masina {
 	int id;
@@ -63,5 +63,4 @@ int main()
 		dezalocare(s);
 
 		return 0;
-
 }
