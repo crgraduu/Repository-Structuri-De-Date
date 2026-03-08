@@ -53,12 +53,14 @@ int main()
     struct masina s2 = initializare(200, 240, "Audi A4", 32000, 'B');
 
     afisare(s);
+    printf("\n");
 
     afisare(s2);
+    printf("\n");
 
     modifica_Atribut(&s, 32000);
 
-    printf("\nDupa modificare:\n");
+    printf("Dupa modificare:\n");
     afisare(s);
 
     dezalocare(&s);
