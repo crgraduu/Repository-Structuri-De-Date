@@ -50,7 +50,11 @@ int main()
 {
     struct masina s = initializare(204, 250, "BMW Seria 3", 35000, 'B');
 
+    struct masina s2 = initializare(200, 240, "Audi A4", 32000, 'B');
+
     afisare(s);
+
+    afisare(s2);
 
     modifica_Atribut(&s, 32000);
 
