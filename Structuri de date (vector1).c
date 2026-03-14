@@ -42,6 +42,31 @@ void afisareVector(masina* vector, int nrElemente)
 		afiseaza(*(vector + i));
 }
 
+struct masina* copiazaPrimeleElemente(masina* vector, int nrElem, int nrCopiate) 
+{
+	if (nrCopiate < nrElem) {
+		struct masina* vectorNou =(masina*) malloc(sizeof(masina) * nrCopiate);
+		   for (int i = 0; i < nrCopiate; i++) 
+		   {
+				vectorNou[i] = copiaza(vector[i]);
+		   }
+			return vectorNou;
+		}
+		else {
+			return NULL;
+		}
+	}
+
+void dezalocare(struct masina** vector, int* nrElem) {
+	for (int i = 0; i < *nrElem; i++) {
+		free((*vector)[i].model);
+	}
+	free(*vector);
+	*nrElem = 0;
+	*vector = NULL;
+}
+
+
 int main() 
 {
 	struct masina m1;
@@ -55,5 +80,6 @@ int main()
 	vector[0] = copiaza(m1);
 	vector[1] = copiaza(m2);
 	afisareVector(vector, nrmasini);
+	dezalocare(&vector, &nrmasini);
 	return 0;
 }
