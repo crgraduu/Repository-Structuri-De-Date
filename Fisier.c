@@ -4,7 +4,8 @@
 #include <string.h>
 
 
-struct StructuraMasina {
+struct StructuraMasina 
+{
 	int id;
 	int nrUsi;
 	float pret;
@@ -16,7 +17,8 @@ typedef struct StructuraMasina Masina;
 typedef struct Nod Nod;
 typedef struct ListaDubla ListaDubla;
 
-struct Nod {
+struct Nod 
+{
 	Masina info;
 	Nod* next;
 	Nod* prev;
@@ -62,7 +64,8 @@ void afisareMasina(Masina masina)
 
 void afisareListaMasini(ListaDubla lista) {
 	Nod* p = lista.prim;
-	while (p) {
+	while (p) 
+	{
 		afisareMasina(p->info);
 		p = p->next;
 	}
