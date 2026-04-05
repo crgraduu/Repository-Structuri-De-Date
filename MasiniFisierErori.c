@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 struct StructuraMasina {
 	int id;
 	int nrUsi;
