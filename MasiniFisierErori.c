@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct StructuraMasina {
+struct StructuraMasina 
+{
 	int id;
 	int nrUsi;
 	float pret;
