@@ -29,11 +29,9 @@ Masina citireMasinaDinFisier(FILE* file)
 	aux = strtok(NULL, sep);
 	m.model = malloc(strlen(aux) + 1);
 	strcpy_s(m.model, strlen(aux) + 1, aux);
-
 	aux = strtok(NULL, sep);
 	m.numeSofer = malloc(strlen(aux) + 1);
 	strcpy_s(m.numeSofer, strlen(aux) + 1, aux);
-
 	m.serie = *strtok(NULL, sep);
 	return m;
 }
@@ -54,26 +52,20 @@ Masina* citireVectorMasiniFisier(const char* Fisier, int* nrMasini) {
 		printf("Eroare la deschiderea fisierului!\n");
 		return NULL;
 	}
-
 	Masina* vector = NULL;
 	*nrMasini = 0;
-
 	while (!feof(f)) {
 		Masina m = citireMasinaDinFisier(f);
 		if (m.model == NULL) {
 			break;
 		}
-
 		vector = (Masina*)realloc(vector, ((*nrMasini) + 1) * sizeof(Masina));
 		vector[*nrMasini] = m;
-
 		(*nrMasini)++;
 	}
-
 	fclose(f);
 	return vector;
 }
-
 void dezalocareVectorMasini(Masina** vector, int* nrMasini) {
 	if (*vector != NULL) {
 		for (int i = 0; i < *nrMasini; i++) {
@@ -85,19 +77,14 @@ void dezalocareVectorMasini(Masina** vector, int* nrMasini) {
 		*nrMasini = 0;
 	}
 }
-
 int main() 
 {
 	FILE* f = fopen("masini.txt", "r");
 	int nrMasini = 0;
-
 	Masina* vector = citireVectorMasiniFisier("masini.txt", &nrMasini);
-
 	for (int i = 0; i < nrMasini; i++) {
 		afisareMasina(vector[i]);
 	}
-
 	dezalocareVectorMasini(&vector, &nrMasini);
-
 	return 0;
 }
