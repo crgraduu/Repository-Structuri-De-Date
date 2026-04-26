@@ -13,8 +13,6 @@ struct Laptop {
  };
 typedef struct Laptop Laptop;
 
-//creare structura pentru Heap
-//un vector de elemente, lungimea vectorului si numarul de elemente din vector
 struct Heap {
 	int lungime;
 	Laptop* laptopuri;
@@ -57,4 +55,18 @@ Heap initializareHeap(int lungime) {
     heap.lungime = lungime;
     heap.laptopuri = malloc(sizeof(Laptop) * lungime);
     heap.nrElemente = 0;
+}
+
+void afisareHeap(Heap heap) {
+	for (int i = 0;i < heap.nrElemente;i++)
+	{
+		afisareLaptop(heap.laptopuri[i]);
+	}
+}
+
+void afiseazaHeapAscuns(Heap heap) {
+	for (int i = heap.nrElemente;i < heap.lungime;i++)
+	{
+		afisareLaptop(heap.laptopuri[i]);
+	}
 }
