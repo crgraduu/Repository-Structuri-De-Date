@@ -128,6 +128,16 @@ Laptop extrageLaptop(Heap* heap) {
 	return laptop;
 }
 
+char* getNextLaptop(Heap heap) {
+	for (int i = 0; i < 6;i++) {
+		Laptop l = extrageLaptop(&heap);
+	}
+	if (heap.nrElemente > 0)
+		return heap.laptopuri[0].marca;
+	else
+		return "";
+}
+
 void dezalocareHeap(Heap* heap) {
 	//sterge toate elementele din Heap
 	for (int i = 0;i < heap->lungime;i++)
