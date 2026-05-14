@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<malloc.h>
+#include<string.h>
 
 struct BMW {
 	int id;
@@ -15,7 +17,7 @@ struct BMW initializare(int id, int kw, char* model, float pret, char pachet) {
 	struct BMW a;
 	a.id = id;
 	a.kw = kw;
-	a.model = malloc(strlen(model) + 1);
+	a.model = (char*)malloc(strlen(model) + 1);
 	strcpy_s(a.model, strlen(model) + 1, model);
 	a.pret = pret;
 	a.pachet = pachet;
@@ -30,16 +32,22 @@ void afisare(BMW a) {
 	printf("Pachet %c\n", a.pachet);
 }
 
-void modifica_Atribut(BMW a) {
+void modificaPachetSiPret(BMW* a, char pachet, float pret ) {
+	a->pachet = pachet;
+	a->pret = pret;
 }
 
-void dezalocare(BMW *a) {
-
+void dezalocare(BMW* a) {
+	free(a->model);
+	a->model = NULL;
 }
 
 int main() {
 	struct BMW a;
-	a = initializare(3, 140, "G20", 25000, 'M');
+	a = initializare(3, 140, "G20", 22000, 'S');
 	afisare (a);
+	modificaPachetSiPret(&a, 'M', 25000);
+	afisare(a);
+	dezalocare(&a);
 	return 0;
 }
