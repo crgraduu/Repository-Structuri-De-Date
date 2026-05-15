@@ -43,6 +43,22 @@ void afisareVector(Dacia* vector, int nrElemente) {
 		afisare(*(vector + i));
 }
 
+void copiazaDupaModel(Dacia* v, int nrElemente, char* model, Dacia** vectorNou, int* dimensiune)
+{
+	*dimensiune = 0;
+	for (int i = 0; i < nrElemente; i++)
+		if (strcmp(v[i].model, model) == 0)
+			(*dimensiune)++;
+	(*vectorNou) = malloc(sizeof(Dacia) * (*dimensiune));
+	(*dimensiune) = 0;
+	for (int i = 0; i < nrElemente; i++)
+		if (strcmp(v[i].model, model) == 0)
+		{
+			(*vectorNou)[*dimensiune] = copie(v[i]);
+			(*dimensiune)++;
+		}
+}
+
 void dezalocare(Dacia** vector, int* nr) {
 	for (int i = 0; i < *nr; i++)
 		free((*vector)[i].model);
@@ -59,5 +75,11 @@ int main() {
 	modificaPret(&vector[1], 23000);
 	vector[2] = initializare(4, 80, "Duster", 19000);
 	afisareVector(vector, nr);
+	Dacia* vectorNou;
+	int dim = 0;
+	copiazaDupaModel(vector, nr, "Bigster", &vectorNou, &dim);
+	afisareVector(vectorNou, dim);
+	dezalocare(&vectorNou, &dim);
 	dezalocare(&vector, &nr);
 	return 0;
+}
