@@ -155,8 +155,13 @@ void dezalocareTabela(HashTable *ht) {
 		{
 			nod* deSters = p;
 			p = p->next;
+			free(deSters->info.strada);
+			free(deSters);
 		}
 	}
+	free(ht->vector);
+	ht->vector = NULL;
+	ht->dim = 0;
 }
 int main() {
 	HashTable tabela = citireCaseDinFisier("case.txt");
